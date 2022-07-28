@@ -3,8 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/cart.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+        <a class="navbar-brand" href="#" style="font-weight: bold;">Welcome to gBay</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                </li>
+            <p id = "info"></p>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </ul>
+        </div>
+        <a href="/cart">
+            <img src="https://icon-library.com/images/shop-cart-icon/shop-cart-icon-23.jpg" width="50px">
+        </a>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <h1 style="color:white;">Your Cart</h1>
+                    <ul class="list-group">
+                        {% if len<1 %}
+                            <li class="list-group-item">Your cart seems to be empty, but you can go back to the main page and add some things :)</li>
+                        {% else %}
+                            {% for item in cart_dict %}
+                                <li class="list-group-item">
+                                    <p>{{item}}</p>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
 </body>
 </html>

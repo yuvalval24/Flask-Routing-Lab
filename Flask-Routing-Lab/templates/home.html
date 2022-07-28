@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/css/style.css">
 
@@ -19,25 +21,45 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
                 </li>
             <p id = "info"></p>
-
-            <div id="id03" class="modal">
-            
-                <form class="modal-content animate" method="post">
-
-                <div class="container-fluid">
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" id = "username2" required>
-
-                 <button id = "submitButton3" type="submit">sign up</button>
-                </div>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
-            </div>
-            <a id = "signedin" class="nav-link"></a>
             </ul>
         </div>
+        <a href="/cart">
+            <img src="https://icon-library.com/images/shop-cart-icon/shop-cart-icon-23.jpg" width="50px">
+        </a>
     </nav>
+    <div clas="container-fluid">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10" >
+                {% for num in range(len)%}
+                {% if (num%3 == 0) == True %}
+                <div class="row">
+                {% endif%}
+                <div class="col-4">
+                    <div class="card" style="width: 31rem; height: 42rem;">
+                        <img class="card-img-top" src="{{products[key_list[num]][1]}}" alt="Card image cap" height="450rem" width="31rem">
+                        <div class="card-body">
+                            <h5 class="card-title">{{key_list[num]}}</h5>
+                            <p class="card-text">{{products[key_list[num]][2]}}</p>
+                            <p class="card-text">Cost: {{products[key_list[num]][0]}} GP</p>
+                            <a href="/product/{{key_list[num]}}" class="btn btn-primary">View Item</a>
+                        </div>
+                    </div>
+                </div>
+                {% if num%3 == 2 %}
+                </div>
+                {% endif%}
+                {% endfor %}
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
 </body>
 </html>
